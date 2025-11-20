@@ -5,10 +5,6 @@ import authorizeRole from "../middlewares/authorizeRole.js";
 
 const router = new Router();
 
-/**
- * 📦 Rotas de Materiais
- */
-
 // 🧱 Cadastrar novo material → admin ou almoxarife
 router.post(
   "/",

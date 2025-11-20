@@ -20,7 +20,7 @@ export default class SaidaItem extends Model {
   }
 
   static associate(models) {
-    // 🔹 Referência à saída
+    // Referência à saída
     this.belongsTo(models.Saida, {
       foreignKey: "id_saida",
       as: "saida",
@@ -28,7 +28,7 @@ export default class SaidaItem extends Model {
       onUpdate: "CASCADE",
     });
 
-    // 🔹 Material vinculado ao item da saída
+    // Material vinculado ao item da saída
     this.belongsTo(models.Material, {
       foreignKey: "id_material",
       as: "material",

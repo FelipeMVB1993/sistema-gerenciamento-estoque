@@ -6,7 +6,7 @@ import Usuario from "../models/Usuario.js";
 import Pedido from "../models/Pedido.js";
 
 class SaidaController {
-  // 🔹 Registrar saída de materiais (somente almoxarife/admin)
+  // Registrar saída de materiais (somente almoxarife/admin)
   async store(req, res) {
     try {
       const {
@@ -104,7 +104,7 @@ class SaidaController {
     }
   }
 
-  // 🔹 Listar saídas (admin e almoxarife)
+  // Listar saídas (admin e almoxarife)
   async index(req, res) {
     try {
       if (!["almoxarife", "admin"].includes(req.user.perfil)) {

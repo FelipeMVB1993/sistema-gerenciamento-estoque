@@ -1,7 +1,7 @@
 import Usuario from "../models/Usuario.js";
 
 class UsuarioController {
-  // 🔹 Criar novo usuário (apenas admin)
+  // Criar novo usuário (apenas admin)
   async store(req, res) {
     try {
       if (req.user.perfil !== "admin") {
@@ -39,7 +39,7 @@ class UsuarioController {
     }
   }
 
-  // 🔹 Listar usuários ou apenas os que solicitaram reativação
+  // Listar usuários ou apenas os que solicitaram reativação
   async index(req, res) {
     try {
       const { solicitacoes } = req.query;
@@ -68,7 +68,7 @@ class UsuarioController {
     }
   }
 
-  // 🔹 Mostrar dados de um usuário específico
+  // Mostrar dados de um usuário específico
   async show(req, res) {
     try {
       const { id } = req.params;
@@ -111,7 +111,7 @@ class UsuarioController {
     }
   }
 
-  // 🔹 Atualizar dados de um usuário
+  // Atualizar dados de um usuário
   async update(req, res) {
     try {
       const { id } = req.params;
@@ -150,7 +150,7 @@ class UsuarioController {
     }
   }
 
-  // 🔹 Solicitação de reativação (usuário inativo)
+  // Solicitação de reativação (usuário inativo)
   async solicitarReativacao(req, res) {
     try {
       const { username } = req.body;
@@ -186,7 +186,7 @@ class UsuarioController {
     }
   }
 
-  // 🔹 Admin aprova reativação
+  // Admin aprova reativação
   async reativar(req, res) {
     try {
       const { id } = req.params;
@@ -211,7 +211,7 @@ class UsuarioController {
     }
   }
 
-  // 🔹 Admin nega solicitação de reativação
+  // Admin nega solicitação de reativação
   async negarReativacao(req, res) {
     try {
       const { id } = req.params;

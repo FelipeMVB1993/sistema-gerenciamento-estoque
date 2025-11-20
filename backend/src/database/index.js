@@ -17,21 +17,6 @@ import EntradaItem from "../models/EntradaItem.js";
 import Pedido from "../models/Pedido.js";
 import PedidoItem from "../models/PedidoItem.js";
 
-// Lista com todos os models
-// const models = [Usuario, Material, Saida, SaidaItem, Entrada, EntradaItem];
-
-// // Inicializa a conexão
-// const connection = new Sequelize(databaseConfig);
-
-// // Registra models e associações
-// models.forEach((model) => model.init(connection));
-// models.forEach(
-//   (model) => model.associate && model.associate(connection.models)
-// );
-
-// export default connection;
-
-// Lista de todos os models
 const models = [
   Usuario,
   Material,
@@ -45,16 +30,10 @@ const models = [
 
 const connection = new Sequelize(databaseConfig);
 
+models.forEach((model) => model.init(connection));
+
 models.forEach((model) => {
-  model.init(connection);
+  if (model.associate) model.associate(connection.models);
 });
 
-// Configura as associações
-models.forEach((model) => {
-  if (model.associate) {
-    model.associate(connection.models);
-  }
-});
-
-// Exporta conexão pronta para uso
 export default connection;

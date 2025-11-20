@@ -1,29 +1,3 @@
-// import jwt from "jsonwebtoken";
-
-// export default async (req, res, next) => {
-//   const { authorization } = req.headers;
-
-//   if (!authorization) {
-//     return res.status(401).json({ errors: ["Login required."] });
-//   }
-
-//   const [, token] = authorization.split(" ");
-
-//   try {
-//     const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
-
-//     req.user = {
-//       id: decoded.id,
-//       username: decoded.username,
-//       perfil: decoded.perfil,
-//     };
-
-//     return next();
-//   } catch (err) {
-//     return res.status(401).json({ errors: ["Token expirado ou inválido."] });
-//   }
-// };
-
 import jwt from "jsonwebtoken";
 import Usuario from "../models/Usuario.js";
 
@@ -55,7 +29,7 @@ export default async (req, res, next) => {
       });
     }
 
-    // 🔹 Novo trecho — bloqueia usuários inativos
+    // Novo trecho — bloqueia usuários inativos
     if (!usuario.ativo) {
       return res.status(403).json({
         status: false,
@@ -63,7 +37,7 @@ export default async (req, res, next) => {
       });
     }
 
-    // 🔹 Anexa o usuário ao req (para as rotas usarem)
+    // Anexa o usuário ao req (para as rotas usarem)
     req.user = usuario;
     return next();
   } catch (e) {

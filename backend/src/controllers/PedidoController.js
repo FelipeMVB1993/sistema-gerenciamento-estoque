@@ -4,7 +4,7 @@ import Usuario from "../models/Usuario.js";
 import Material from "../models/Material.js";
 
 class PedidoController {
-  // 🔹 Criar novo pedido (feito pelo colaborador)
+  // Criar novo pedido (feito pelo colaborador)
   async store(req, res) {
     try {
       const { observacao, materiais } = req.body;
@@ -66,7 +66,7 @@ class PedidoController {
     }
   }
 
-  // 🔹 Listar todos os pedidos
+  // Listar todos os pedidos
   async index(req, res) {
     try {
       const usuario = await Usuario.findByPk(req.user.id);
@@ -78,8 +78,8 @@ class PedidoController {
         });
       }
 
-      // 🔸 Admin e Almoxarife veem todos os pedidos
-      // 🔸 Colaborador vê apenas os próprios
+      // Admin e Almoxarife veem todos os pedidos
+      // Colaborador vê apenas os próprios
       const where =
         usuario.perfil === "colaborador"
           ? { id_requerente: usuario.id }
@@ -121,7 +121,7 @@ class PedidoController {
     }
   }
 
-  // 🔹 Atualizar o status de um pedido (feito por admin ou almoxarife)
+  // Atualizar o status de um pedido (feito por admin ou almoxarife)
   async updateStatus(req, res) {
     try {
       const { id } = req.params;

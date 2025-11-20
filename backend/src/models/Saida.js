@@ -25,19 +25,19 @@ export default class Saida extends Model {
   }
 
   static associate(models) {
-    // 🔹 Usuário que registrou a saída (almoxarife)
+    // Usuário que registrou a saída (almoxarife)
     this.belongsTo(models.Usuario, {
       foreignKey: "id_almoxarife",
       as: "almoxarife",
     });
 
-    // 🔹 Usuário que retirou os materiais (requerente)
+    // Usuário que retirou os materiais (requerente)
     this.belongsTo(models.Usuario, {
       foreignKey: "id_requerente",
       as: "requerente",
     });
 
-    // 🔹 Itens da saída
+    // Itens da saída
     this.hasMany(models.SaidaItem, {
       foreignKey: "id_saida",
       as: "itens",

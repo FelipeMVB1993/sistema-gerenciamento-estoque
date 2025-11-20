@@ -1,15 +1,16 @@
 import dotenv from "dotenv";
 dotenv.config();
-const cors = require("cors");
-import "./src/database";
-import express from "express";
 
-import homeRoutes from "./src/routes/homeRoutes";
-import usuarioRoutes from "./src/routes/usuarioRoutes";
-import tokenRoutes from "./src/routes/tokenRoutes";
-import materialRoutes from "./src/routes/materialRoutes";
-import entradaRoutes from "./src/routes/entradaRoutes";
-import saidaRoutes from "./src/routes/saidaRoutes";
+import cors from "cors";
+import express from "express";
+import "./src/database/index.js";
+
+import homeRoutes from "./src/routes/homeRoutes.js";
+import usuarioRoutes from "./src/routes/usuarioRoutes.js";
+import tokenRoutes from "./src/routes/tokenRoutes.js";
+import materialRoutes from "./src/routes/materialRoutes.js";
+import entradaRoutes from "./src/routes/entradaRoutes.js";
+import saidaRoutes from "./src/routes/saidaRoutes.js";
 import pedidoRoutes from "./src/routes/pedidoRoutes.js";
 
 class App {
@@ -22,17 +23,17 @@ class App {
   middlewares() {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
+    this.app.use(cors());
   }
 
   routes() {
-    this.app.use(cors());
     this.app.use("/", homeRoutes);
-    this.app.use("/usuarios/", usuarioRoutes);
-    this.app.use("/tokens/", tokenRoutes);
-    this.app.use("/materiais/", materialRoutes);
-    this.app.use("/entradas/", entradaRoutes);
-    this.app.use("/saidas/", saidaRoutes);
-    this.app.use("/pedidos/", pedidoRoutes);
+    this.app.use("/usuarios", usuarioRoutes);
+    this.app.use("/tokens", tokenRoutes);
+    this.app.use("/materiais", materialRoutes);
+    this.app.use("/entradas", entradaRoutes);
+    this.app.use("/saidas", saidaRoutes);
+    this.app.use("/pedidos", pedidoRoutes);
   }
 }
 

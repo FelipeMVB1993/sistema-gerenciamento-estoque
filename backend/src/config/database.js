@@ -1,11 +1,12 @@
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-module.exports = {
+const databaseConfig = {
   dialect: "mariadb",
   host: process.env.DATABASE_HOST,
   port: Number(process.env.DATABASE_PORT),
   username: process.env.DATABASE_USERNAME,
-  password: "",
+  password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
   define: {
     timestamps: true,
@@ -19,3 +20,5 @@ module.exports = {
   },
   timezone: "-03:00",
 };
+
+export default databaseConfig;
